@@ -94,7 +94,7 @@
 
   <distributionManagement>
     <repository>
-      <id>like-server</id>
+      <id>github</id>
       <name>GitHub Maven Packages</name>
       <url>https://maven.pkg.github.com/wutsi/like-server</url>
     </repository>
