@@ -13,9 +13,7 @@
     }
   ],
   "addons": [
-    {
-      "plan": "papertrail:choklad",
-      "as": "LOGGER"
-    }
+    "rollbar:free",
+    "papertrail:choklad"
   ]
 }
