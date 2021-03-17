@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle version="8.0">
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/Application.kt">
+		<error line="3" column="1" severity="error" message="Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end" source="import-ordering" />
+		<error line="10" column="39" severity="error" message="Unnecessary &quot;Unit&quot; return type" source="no-unit-return" />
+		<error line="11" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/delegate/CreateDelegate.kt">
+		<error line="9" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="10" column="1" severity="error" message="Unexpected indentation (4) (should be 8)" source="indent" />
+		<error line="11" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/delegate/DeleteDelegate.kt">
+		<error line="3" column="1" severity="error" message="Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end" source="import-ordering" />
+		<error line="9" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="9" column="32" severity="error" message="Unnecessary &quot;Unit&quot; return type" source="no-unit-return" />
+		<error line="10" column="1" severity="error" message="Unexpected indentation (4) (should be 8)" source="indent" />
+		<error line="11" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/delegate/StatsDelegate.kt">
+		<error line="3" column="1" severity="error" message="Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end" source="import-ordering" />
+		<error line="9" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="10" column="1" severity="error" message="Unexpected indentation (4) (should be 8)" source="indent" />
+		<error line="11" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/endpoint/CreateController.kt">
+		<error line="3" column="1" severity="error" message="Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end" source="import-ordering" />
+		<error line="13" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="13" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="15" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="16" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="17" column="1" severity="error" message="Unexpected indentation (6) (should be 8)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/endpoint/DeleteController.kt">
+		<error line="3" column="1" severity="error" message="Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end" source="import-ordering" />
+		<error line="12" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="12" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="14" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="15" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="15" column="39" severity="error" message="Missing spacing around &quot;=&quot;" source="op-spacing" />
+		<error line="15" column="57" severity="error" message="Unnecessary &quot;Unit&quot; return type" source="no-unit-return" />
+		<error line="16" column="1" severity="error" message="Unexpected indentation (4) (should be 8)" source="indent" />
+		<error line="17" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/endpoint/StatsController.kt">
+		<error line="3" column="1" severity="error" message="Imports must be ordered in lexicographic order without any empty lines in-between with &quot;java&quot;, &quot;javax&quot;, &quot;kotlin&quot; and aliases in the end" source="import-ordering" />
+		<error line="12" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="12" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="14" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="15" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="15" column="39" severity="error" message="Missing spacing around &quot;=&quot;" source="op-spacing" />
+		<error line="15" column="56" severity="error" message="Missing spacing around &quot;=&quot;" source="op-spacing" />
+		<error line="16" column="1" severity="error" message="Unexpected indentation (6) (should be 8)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/model/CreateLikeRequest.kt">
+		<error line="7" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="7" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="8" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/model/CreateLikeResponse.kt">
+		<error line="6" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="6" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/model/ErrorResponse.kt">
+		<error line="6" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="6" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="7" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="7" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+	</file>
+	<file name="/Users/htchepannou/Perso/wutsi/like-server/src/main/kotlin/com/wutsi/like/model/GetStatsResponse.kt">
+		<error line="7" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="7" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="8" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="8" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+		<error line="9" column="1" severity="error" message="Unexpected indentation (2) (should be 4)" source="indent" />
+		<error line="9" column="3" severity="error" message="Unexpected indentation (expected 4, actual 2)" source="parameter-list-wrapping" />
+	</file>
+</checkstyle>
