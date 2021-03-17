@@ -5,3 +5,5 @@ java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.11.jar server \
     -i https://wutsi-openapi.s3.amazonaws.com/like_api.yaml \
     -o . \
     -heroku wutsi-test-like-service
+
+mvn antrun:run@ktlint-format
