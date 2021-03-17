@@ -16,10 +16,17 @@ jobs:
       - name: jdk
         uses: actions/setup-java@v1
         with:
-          java-version: 1.8
+          java-version: 11
       - name: Build
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: |
           mvn -s settings.xml deploy
 
+      - name: Deploy
+        uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: wutsi-test-like-service
+          healthcheck: "https://wutsi-test-like-service.herokuapp.com/actuator/health"
+          delay: 30
