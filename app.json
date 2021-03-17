@@ -4,7 +4,8 @@
   "env": {
     "APP_PROFILE": {
       "description": "Spring Profile",
-      "generator": "test"
+      "value": "test",
+      "required": true
     }
   },
   "buildpacks": [
@@ -13,7 +14,7 @@
     }
   ],
   "addons": [
-    "rollbar:free",
-    "papertrail:choklad"
+    "rollbar",
+    "papertrail"
   ]
 }
