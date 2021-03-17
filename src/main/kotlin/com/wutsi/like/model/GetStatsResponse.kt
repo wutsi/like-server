@@ -4,7 +4,7 @@ import kotlin.Long
 import kotlin.String
 
 public data class GetStatsResponse(
-  public val link: String = "",
-  public val count: Long = 0,
-  public val countText: String = ""
+    public val link: String = "",
+    public val count: Long = 0,
+    public val countText: String = ""
 )
