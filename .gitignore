@@ -29,3 +29,5 @@ target/
 **/*.dump
 application.pid
 application.port
+
+chromedriver

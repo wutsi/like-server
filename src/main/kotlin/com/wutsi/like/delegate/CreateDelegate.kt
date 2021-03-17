@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 
 @Service
 public class CreateDelegate {
-  public fun invoke(request: CreateLikeRequest): CreateLikeResponse {
-    TODO()
-  }
+    public fun invoke(request: CreateLikeRequest): CreateLikeResponse {
+        TODO()
+    }
 }

@@ -1,12 +1,11 @@
 package com.wutsi.like
 
-import kotlin.String
-import kotlin.Unit
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import kotlin.String
 
 @SpringBootApplication
 public class Application
 
-public fun main(vararg args: String): Unit {
-  org.springframework.boot.runApplication<Application>(*args)
+public fun main(vararg args: String) {
+    org.springframework.boot.runApplication<Application>(*args)
 }
