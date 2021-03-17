@@ -7,3 +7,4 @@ java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.11.jar server \
     -heroku wutsi-test-like-service
 
 mvn antrun:run@ktlint-format
+mvn antrun:run@ktlint-format

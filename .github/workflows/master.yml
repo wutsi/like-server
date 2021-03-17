@@ -30,7 +30,7 @@ jobs:
           curl https://cli-assets.heroku.com/install.sh | sh
           heroku plugins:install @heroku-cli/plugin-java
           heroku buildpacks:clear --app wutsi-test-like-service
-          heroku deploy:jar target/-.jar --app wutsi-test-like-service
+          heroku deploy:jar target/like-server-1.0.jar --app wutsi-test-like-service
 
       - name: Healthcheck
         run: |
