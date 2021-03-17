@@ -24,9 +24,15 @@ jobs:
           mvn -s settings.xml deploy
 
       - name: Deploy
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: wutsi-test-like-service
-          healthcheck: "https://wutsi-test-like-service.herokuapp.com/actuator/health"
-          delay: 30
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+          heroku plugins:install @heroku-cli/plugin-java
+          heroku buildpacks:clear --app wutsi-test-like-service
+          heroku deploy:jar target/-.jar --app ${HEROKU_APP}
+
+      - name: Healthcheck
+        run: |
+          sleep 90
+          curl -sSf https://wutsi-test-like-service.herokuapp.com/actuator/health >> /dev/null
