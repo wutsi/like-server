@@ -23,7 +23,21 @@ jobs:
         run: |
           mvn -s settings.xml install
 
-      - name: Deploy
+      - name: HerokuCLI
+        run: |
+          curl https://cli-assets.heroku.com/install.sh | sh
+          heroku plugins:install @heroku-cli/plugin-java
+
+      - name: Heroku Setup
+        env:
+          HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+        run: |
+          heroku apps | grep wutsi-test-like-service && echo 'app: wutsi-test-like-service created' ||  heroku apps:create wutsi-test-like-service
+          heroku addons -a wutsi-test-like-service | grep papertrail && echo 'addon: papertrail created' ||  heroku addons:create papertrail -a wutsi-test-like-service
+          heroku addons -a wutsi-test-like-service | grep memcachier && echo 'addon: memcachier created' ||  heroku addons:create memcachier -a wutsi-test-like-service
+          heroku addons -a wutsi-test-like-service | grep heroku-postgresql && echo 'addon: heroku-postgresql created' ||  heroku addons:create heroku-postgresql -a wutsi-test-like-service
+
+      - name: Heroku Deploy
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
