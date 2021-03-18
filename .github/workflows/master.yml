@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: jdk
+      - name: JDK
         uses: actions/setup-java@v1
         with:
           java-version: 11
@@ -28,7 +28,7 @@ jobs:
           curl https://cli-assets.heroku.com/install.sh | sh
           heroku plugins:install @heroku-cli/plugin-java
 
-      - name: Heroku Setup
+      - name: HerokuSetup
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
@@ -37,12 +37,10 @@ jobs:
           heroku addons -a wutsi-test-like-service | grep memcachier && echo 'addon: memcachier created' ||  heroku addons:create memcachier -a wutsi-test-like-service
           heroku addons -a wutsi-test-like-service | grep heroku-postgresql && echo 'addon: heroku-postgresql created' ||  heroku addons:create heroku-postgresql -a wutsi-test-like-service
 
-      - name: Heroku Deploy
+      - name: HerokuDeploy
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
-          heroku plugins:install @heroku-cli/plugin-java
           heroku buildpacks:clear --app wutsi-test-like-service
           heroku deploy:jar target/like-server.jar --app wutsi-test-like-service
 
