@@ -32,16 +32,17 @@ jobs:
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
-          heroku apps | grep wutsi-test-like-service && echo 'app: wutsi-test-like-service created' ||  heroku apps:create wutsi-test-like-service
-          heroku addons -a wutsi-test-like-service | grep papertrail && echo 'addon: papertrail created' ||  heroku addons:create papertrail -a wutsi-test-like-service
-          heroku addons -a wutsi-test-like-service | grep memcachier && echo 'addon: memcachier created' ||  heroku addons:create memcachier -a wutsi-test-like-service
-          heroku addons -a wutsi-test-like-service | grep heroku-postgresql && echo 'addon: heroku-postgresql created' ||  heroku addons:create heroku-postgresql -a wutsi-test-like-service
+          heroku apps | grep wutsi-test-like-service && echo 'app: wutsi-test-like-service exists' ||  heroku apps:create wutsi-test-like-service
+          heroku buildpacks:clear
+          heroku buildpacks:add heroku/java --app wutsi-test-like-service
+          heroku addons -a wutsi-test-like-service | grep papertrail && echo 'addon: papertrail exists' ||  heroku addons:create papertrail -a wutsi-test-like-service
+          heroku addons -a wutsi-test-like-service | grep memcachier && echo 'addon: memcachier exists' ||  heroku addons:create memcachier -a wutsi-test-like-service
+          heroku addons -a wutsi-test-like-service | grep heroku-postgresql && echo 'addon: heroku-postgresql exists' ||  heroku addons:create heroku-postgresql -a wutsi-test-like-service
 
       - name: HerokuDeploy
         env:
           HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
         run: |
-          heroku buildpacks:clear --app wutsi-test-like-service
           heroku deploy:jar target/like-server.jar --app wutsi-test-like-service
 
       - name: Healthcheck
