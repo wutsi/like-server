@@ -34,8 +34,6 @@
 
     <hikari-cp.version>4.0.3</hikari-cp.version>
     <postgresql.version>42.2.19</postgresql.version>
-    <xmemcached.version>2.4.5</xmemcached.version>
-
     <wutsi-spring-memcached.version>0.0.3</wutsi-spring-memcached.version>
   </properties>
 

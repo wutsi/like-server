@@ -40,7 +40,6 @@ spring:
 
 memcached:
   enabled: false
-  username: "fo"
-  password: "bar"
-  servers: "127.0.0.1"
   ttl: ${SPRING_CACHE_TTL:86400}
+
+
