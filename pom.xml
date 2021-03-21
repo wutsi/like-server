@@ -36,7 +36,7 @@
     <postgresql.version>42.2.19</postgresql.version>
     <xmemcached.version>2.4.5</xmemcached.version>
 
-    <wutsi-spring-memcached.version>0.0.2</wutsi-spring-memcached.version>
+    <wutsi-spring-memcached.version>0.0.3</wutsi-spring-memcached.version>
   </properties>
 
   <dependencies>
