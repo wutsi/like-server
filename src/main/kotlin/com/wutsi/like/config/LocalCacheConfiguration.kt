@@ -1,14 +1,14 @@
 package com.wutsi.like.config
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cache.CacheManager
 import org.springframework.cache.concurrent.ConcurrentMapCache
 import org.springframework.cache.support.SimpleCacheManager
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Profile
 
 @Configuration
-@Profile(value = ["!test"])
+@ConditionalOnProperty(value = ["memcached.enabled"], havingValue = "false")
 class LocalCacheConfiguration {
     @Bean
     fun cacheManager(): CacheManager {
