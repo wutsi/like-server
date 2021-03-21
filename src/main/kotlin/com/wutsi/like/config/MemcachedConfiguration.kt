@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 
 @Configuration
-@Profile(value = ["test", "prod"])
+@Profile(value = ["test"])
 class MemcachedConfiguration(
     @Value("\${memcached.username}") private val username: String,
     @Value("\${memcached.password}") private val password: String,

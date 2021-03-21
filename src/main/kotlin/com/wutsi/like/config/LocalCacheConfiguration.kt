@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.context.annotation.Profile
 
 @Configuration
-@Profile(value = ["!test", "!prod"])
-class LocalConfiguration {
+@Profile(value = ["!test"])
+class LocalCacheConfiguration {
     @Bean
     fun cacheManager(): CacheManager {
         val cacheManager = SimpleCacheManager()
