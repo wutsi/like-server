@@ -17,13 +17,13 @@ import org.springframework.context.annotation.Profile
 class MemcachedConfiguration(
     @Value("\${memcached.username}") private val username: String,
     @Value("\${memcached.password}") private val password: String,
-    @Value("\${memcached.addresses}") private val addresses: String,
+    @Value("\${memcached.servers}") private val servers: String,
     @Value("\${memcached.ttl}") private val ttl: Int
 ) {
     @Bean
     fun memcachedClient(): MemcachedClient =
         MemcachedClientBuilder()
-            .withAddresses(addresses)
+            .withServers(servers)
             .withPassword(password)
             .withUsername(username)
             .build()
