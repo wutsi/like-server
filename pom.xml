@@ -8,14 +8,14 @@
 
   <artifactId>like-server</artifactId>
   <groupId>com.wutsi.like</groupId>
-  <version>1.0</version>
+  <version>0.0.1</version>
   <packaging>jar</packaging>
   <name>like-server</name>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>2.3.4.RELEASE</version>
+    <version>2.4.4</version>
   </parent>
 
   <properties>
@@ -31,10 +31,10 @@
     <jackson-module-kotlin.version>2.12.2</jackson-module-kotlin.version>
     <klint.version>0.40.0</klint.version>
     <maven-antrun-plugin.version>1.7</maven-antrun-plugin.version>
-
     <hikari-cp.version>4.0.3</hikari-cp.version>
     <postgresql.version>42.2.19</postgresql.version>
-    <wutsi-spring-memcached.version>0.0.3</wutsi-spring-memcached.version>
+    <flyway.version>7.7.0</flyway.version>
+    <wutsi-spring-memcached.version>1.0.0</wutsi-spring-memcached.version>
   </properties>
 
   <dependencies>
@@ -63,7 +63,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
-
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -78,7 +77,11 @@
       <artifactId>postgresql</artifactId>
       <version>${postgresql.version}</version>
     </dependency>
-
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>${flyway.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-cache</artifactId>
@@ -131,10 +134,6 @@
       <id>central</id>
       <name>bintray</name>
       <url>http://jcenter.bintray.com</url>
-    </repository>
-    <repository>
-      <id>wutsi-spring-memcached</id>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-spring-memcached</url>
     </repository>
   </repositories>
 

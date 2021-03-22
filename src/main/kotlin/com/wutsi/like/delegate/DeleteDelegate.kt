@@ -1,11 +1,11 @@
 package com.wutsi.like.`delegate`
 
+import com.wutsi.like.service.LikeService
 import org.springframework.stereotype.Service
-import kotlin.Long
 
 @Service
-public class DeleteDelegate {
+public class DeleteDelegate(private val service: LikeService) {
     public fun invoke(id: Long) {
-        TODO()
+        service.delete(id)
     }
 }
