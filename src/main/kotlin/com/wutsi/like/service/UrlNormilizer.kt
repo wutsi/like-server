@@ -6,8 +6,12 @@ import java.security.MessageDigest
 
 @Service
 public class UrlNormilizer {
-    fun normalize(url: String): String =
-        url.toLowerCase()
+    fun normalize(url: String): String {
+        var xurl = url
+        if (xurl.endsWith('?') || xurl.endsWith('/'))
+            xurl = xurl.substring(0, xurl.length - 1)
+        return xurl.toLowerCase()
+    }
 
     fun hash(url: String): String {
         val digest: MessageDigest = MessageDigest.getInstance("SHA-256")
