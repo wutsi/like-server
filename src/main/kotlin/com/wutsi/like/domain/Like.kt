@@ -16,16 +16,16 @@ data class Like(
     val id: Long? = null,
 
     @Column(name = "canonical_url")
-    val canonicalUrl: String,
+    val canonicalUrl: String = "",
 
     @Column(name = "url_hash")
-    val urlHash: String,
+    val urlHash: String = "",
 
     @Column(name = "device_uuid")
-    val deviceUUID: String?,
+    val deviceUUID: String? = null,
 
     @Column(name = "user_id")
-    val userId: Long?,
+    val userId: Long? = null,
 
     @Column(name = "like_date_time")
     val likeDateTime: Date = Date()
