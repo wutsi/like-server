@@ -1,17 +1,13 @@
 package com.wutsi.like.`delegate`
 
 import com.wutsi.like.model.GetStatsResponse
+import com.wutsi.like.service.LikeService
 import org.springframework.stereotype.Service
-import kotlin.Long
-import kotlin.String
 
 @Service
-public class StatsDelegate {
-    public fun invoke(
-        canonicalUrl: String,
-        deviceId: String,
-        userId: Long
-    ): GetStatsResponse {
-        TODO()
-    }
+public class StatsDelegate(private val service: LikeService) {
+    public fun invoke(canonicalUrl: String) = GetStatsResponse(
+        canonicalUrl = canonicalUrl,
+        count = service.count(canonicalUrl)
+    )
 }

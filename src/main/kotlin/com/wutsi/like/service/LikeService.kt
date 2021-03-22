@@ -9,16 +9,15 @@ import javax.transaction.Transactional
 
 @Service
 public class LikeService(
-    private val urlNormilizer: UrlNormilizer,
+    private val urlNormalizer: UrlNormalizer,
     private val dao: LikeRepository
 ) {
     @Transactional
     fun create(request: CreateLikeRequest): Like {
-        val url = urlNormilizer.normalize(request.canonicalUrl)
         val like = dao.save(
             Like(
-                canonicalUrl = url,
-                urlHash = urlNormilizer.hash(url),
+                canonicalUrl = urlNormalizer.normalize(request.canonicalUrl),
+                urlHash = urlNormalizer.hash(request.canonicalUrl),
                 deviceUUID = request.deviceUUID?.toLowerCase(),
                 userId = request.userId,
                 likeDateTime = Date()
@@ -30,7 +29,13 @@ public class LikeService(
     @Transactional
     fun delete(id: Long) {
         val like = dao.findById(id)
-        if (like.isPresent)
+        if (like.isPresent) {
             dao.delete(like.get())
+        }
+    }
+
+    fun count(canonicalUrl: String): Long {
+        val urlHash = urlNormalizer.hash(canonicalUrl)
+        return dao.countByUrlHash(urlHash)
     }
 }

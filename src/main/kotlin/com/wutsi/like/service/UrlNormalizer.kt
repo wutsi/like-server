@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 
 @Service
-public class UrlNormilizer {
+public class UrlNormalizer {
     fun normalize(url: String): String {
         var xurl = url
         if (xurl.endsWith('?') || xurl.endsWith('/'))

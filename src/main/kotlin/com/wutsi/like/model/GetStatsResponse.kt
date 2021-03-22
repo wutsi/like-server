@@ -5,6 +5,5 @@ import kotlin.String
 
 public data class GetStatsResponse(
     public val canonicalUrl: String = "",
-    public val count: Long = 0,
-    public val countText: String = ""
+    public val count: Long = 0
 )

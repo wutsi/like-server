@@ -5,4 +5,6 @@ import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface LikeRepository : CrudRepository<Like, Long>
+interface LikeRepository : CrudRepository<Like, Long> {
+    fun countByUrlHash(urlHash: String): Long
+}
