@@ -3,8 +3,8 @@ package com.wutsi.like.service
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class UrlNormilizerTest {
-    private val normalizer: UrlNormilizer = UrlNormilizer()
+internal class UrlNormalizerTest {
+    private val normalizer: UrlNormalizer = UrlNormalizer()
 
     @Test
     fun normalize() {
