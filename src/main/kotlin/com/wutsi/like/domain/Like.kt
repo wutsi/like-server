@@ -18,8 +18,11 @@ data class Like(
     @Column(name = "canonical_url")
     val canonicalUrl: String,
 
-    @Column(name = "device_id")
-    val deviceId: String?,
+    @Column(name = "url_hash")
+    val urlHash: String,
+
+    @Column(name = "device_uuid")
+    val deviceUUID: String?,
 
     @Column(name = "user_id")
     val userId: Long?,

@@ -7,6 +7,6 @@ import kotlin.String
 public data class CreateLikeRequest(
     @get:NotBlank
     public val canonicalUrl: String = "",
-    public val deviceId: String? = null,
+    public val deviceUUID: String? = null,
     public val userId: Long? = null
 )

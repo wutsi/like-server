@@ -7,12 +7,16 @@ import org.springframework.stereotype.Service
 import java.util.Date
 
 @Service
-public class LikeService(private val dao: LikeRepository) {
+public class LikeService(
+    private val urlNormilizer: UrlNormilizer,
+    private val dao: LikeRepository
+) {
     fun create(request: CreateLikeRequest): Like {
         val like = dao.save(
             Like(
                 canonicalUrl = request.canonicalUrl,
-                deviceId = request.deviceId,
+                urlHash = urlNormilizer.hash(request.canonicalUrl),
+                deviceUUID = request.deviceUUID,
                 userId = request.userId,
                 likeDateTime = Date()
             )

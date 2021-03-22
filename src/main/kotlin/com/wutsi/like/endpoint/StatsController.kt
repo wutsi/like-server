@@ -14,8 +14,8 @@ public class StatsController(
 ) {
     @GetMapping("/v1/likes/stats")
     public fun invoke(
-        @RequestParam(name = "canonicalUrl", required = false) canonicalUrl: String,
-        @RequestParam(name = "deviceId", required = false) deviceId: String,
-        @RequestParam(name = "userId", required = false) userId: Long
-    ): GetStatsResponse = delegate.invoke(canonicalUrl, deviceId, userId)
+        @RequestParam(name = "canonical_url", required = false) canonicalUrl: String,
+        @RequestParam(name = "device_uuid", required = false) deviceUuid: String,
+        @RequestParam(name = "user_id", required = false) userId: Long
+    ): GetStatsResponse = delegate.invoke(canonicalUrl, deviceUuid, userId)
 }
