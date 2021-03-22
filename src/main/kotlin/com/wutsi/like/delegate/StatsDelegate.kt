@@ -6,8 +6,11 @@ import org.springframework.stereotype.Service
 
 @Service
 public class StatsDelegate(private val service: LikeService) {
-    public fun invoke(canonicalUrl: String) = GetStatsResponse(
-        canonicalUrl = canonicalUrl,
-        count = service.count(canonicalUrl)
-    )
+    public fun invoke(canonicalUrl: String): GetStatsResponse {
+        val counter = service.count(canonicalUrl)
+        return GetStatsResponse(
+            canonicalUrl = canonicalUrl,
+            count = counter.count
+        )
+    }
 }
