@@ -10,7 +10,7 @@ import javax.persistence.Table
 
 @Entity
 @Table(name = "T_LIKE")
-data class Like(
+data class LikeEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
