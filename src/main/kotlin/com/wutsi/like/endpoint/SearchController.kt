@@ -1,14 +1,13 @@
 package com.wutsi.like.endpoint
 
-import com.wutsi.like.`delegate`.SearchDelegate
+import com.wutsi.like.delegate.SearchDelegate
 import com.wutsi.like.model.SearchLikeResponse
-import org.springframework.web.bind.`annotation`.GetMapping
-import org.springframework.web.bind.`annotation`.RequestParam
-import org.springframework.web.bind.`annotation`.RestController
-import kotlin.Int
-import kotlin.Long
-import kotlin.String
+import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.RestController
 
+@CrossOrigin
 @RestController
 public class SearchController(
     private val `delegate`: SearchDelegate

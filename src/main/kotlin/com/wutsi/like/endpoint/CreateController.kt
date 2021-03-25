@@ -3,11 +3,13 @@ package com.wutsi.like.endpoint
 import com.wutsi.like.`delegate`.CreateDelegate
 import com.wutsi.like.model.CreateLikeRequest
 import com.wutsi.like.model.CreateLikeResponse
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.`annotation`.PostMapping
 import org.springframework.web.bind.`annotation`.RequestBody
 import org.springframework.web.bind.`annotation`.RestController
 import javax.validation.Valid
 
+@CrossOrigin
 @RestController
 public class CreateController(
     private val `delegate`: CreateDelegate

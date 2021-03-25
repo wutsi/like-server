@@ -1,11 +1,12 @@
 package com.wutsi.like.endpoint
 
-import com.wutsi.like.`delegate`.DeleteDelegate
-import org.springframework.web.bind.`annotation`.DeleteMapping
-import org.springframework.web.bind.`annotation`.PathVariable
-import org.springframework.web.bind.`annotation`.RestController
-import kotlin.Long
+import com.wutsi.like.delegate.DeleteDelegate
+import org.springframework.web.bind.annotation.CrossOrigin
+import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RestController
 
+@CrossOrigin
 @RestController
 public class DeleteController(
     private val `delegate`: DeleteDelegate

@@ -18,7 +18,9 @@ public class SearchDelegate(private val service: LikeService) {
     ): SearchLikeResponse {
         val likes = service.search(canonicalUrl, userId, deviceUuid)
         return SearchLikeResponse(
-            likes = likes.map { toLike(it) }
+            likes = likes.map { toLike(it) },
+            offset = offset,
+            nextOffset = if (likes.size >= limit) offset + limit else null
         )
     }
 
