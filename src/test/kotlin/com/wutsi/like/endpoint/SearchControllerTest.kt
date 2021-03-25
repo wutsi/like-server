@@ -34,15 +34,16 @@ internal class SearchControllerTest {
         assertEquals(HttpStatus.OK, result.statusCode)
         assertEquals(2, result.body.likes.size)
 
-        assertEquals(1L, result.body.likes[0].id)
-        assertEquals("https://www.google.com", result.body.likes[0].canonicalUrl)
-        assertNull(result.body.likes[0].deviceUUID)
-        assertEquals(1L, result.body.likes[0].userId)
+        val likes = result.body.likes.sortedBy { it.id }
+        assertEquals(1L, likes[0].id)
+        assertEquals("https://www.google.com", likes[0].canonicalUrl)
+        assertNull(likes[0].deviceUUID)
+        assertEquals(1L, likes[0].userId)
 
-        assertEquals(2L, result.body.likes[1].id)
-        assertEquals("https://www.google.com", result.body.likes[1].canonicalUrl)
-        assertEquals("4fad8daa-d502-41b7-ac4a-2c7d97fa7543", result.body.likes[1].deviceUUID)
-        assertEquals(1L, result.body.likes[1].userId)
+        assertEquals(2L, likes[1].id)
+        assertEquals("https://www.google.com", likes[1].canonicalUrl)
+        assertEquals("4fad8daa-d502-41b7-ac4a-2c7d97fa7543", likes[1].deviceUUID)
+        assertEquals(1L, likes[1].userId)
     }
 
     @Test
