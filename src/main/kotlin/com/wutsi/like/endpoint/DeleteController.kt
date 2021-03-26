@@ -12,7 +12,7 @@ public class DeleteController(
     private val `delegate`: DeleteDelegate
 ) {
     @DeleteMapping("/v1/likes/{id}")
-    public fun invoke(@PathVariable(name = "id") id: Long) {
+    public fun invoke(@PathVariable id: Long) {
         delegate.invoke(id)
     }
 }
