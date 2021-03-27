@@ -1,21 +1,19 @@
 package com.wutsi.like.config
 
 import net.rubyeye.xmemcached.MemcachedClient
-import org.springframework.beans.factory.`annotation`.Value
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.actuate.health.HealthIndicator
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.cache.CacheManager
-import org.springframework.context.`annotation`.Bean
-import org.springframework.context.`annotation`.Configuration
-import kotlin.Int
-import kotlin.String
+import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
 @Configuration
 @ConditionalOnProperty(
     value = ["memcached.enabled"],
     havingValue = "true"
 )
-public class SpringCacheRemoteConfiguration(
+public class CacheRemoteConfiguration(
     @Value(value = "\${memcached.username}")
     private val username: String,
     @Value(value = "\${memcached.password}")

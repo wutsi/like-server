@@ -3,6 +3,7 @@ package com.wutsi.like.service
 import com.wutsi.like.dao.LikeRepository
 import com.wutsi.like.domain.LikeEntity
 import com.wutsi.like.model.CreateLikeRequest
+import com.wutsi.stream.EventStream
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.cache.annotation.CachePut
 import org.springframework.cache.annotation.Cacheable
@@ -15,7 +16,8 @@ import javax.transaction.Transactional
 @Service
 public class LikeService(
     private val urlNormalizer: UrlNormalizer,
-    private val dao: LikeRepository
+    private val dao: LikeRepository,
+    private val events: EventStream
 ) {
     companion object {
         const val CACHE_NAME = "default"
@@ -23,8 +25,8 @@ public class LikeService(
 
     @Transactional
     @CacheEvict(value = [CACHE_NAME], key = "#result.urlHash")
-    fun create(request: CreateLikeRequest): LikeEntity =
-        dao.save(
+    fun create(request: CreateLikeRequest): LikeEntity {
+        val like = dao.save(
             LikeEntity(
                 canonicalUrl = urlNormalizer.normalize(request.canonicalUrl),
                 urlHash = urlNormalizer.hash(request.canonicalUrl),
@@ -34,16 +36,34 @@ public class LikeService(
             )
         )
 
+        events.publish(
+            type = "urn:wutsi:like:liked",
+            payload = mapOf(
+                "likeId" to like.id,
+                "canonicalUrl" to like.canonicalUrl
+            )
+        )
+        return like
+    }
+
     @Transactional
     @CacheEvict(value = [CACHE_NAME], key = "#result.urlHash")
     fun delete(id: Long): LikeEntity? {
         val opt = dao.findById(id)
-        if (opt.isPresent) {
-            val like = opt.get()
-            dao.delete(like)
-            return like
-        }
-        return null
+        if (!opt.isPresent)
+            return null
+
+        val like = opt.get()
+        dao.delete(like)
+
+        events.publish(
+            type = "urn:wutsi:like:unliked",
+            payload = mapOf(
+                "likeId" to like.id,
+                "canonicalUrl" to like.canonicalUrl
+            )
+        )
+        return like
     }
 
     @Cacheable(value = [CACHE_NAME], key = "#result.urlHash")

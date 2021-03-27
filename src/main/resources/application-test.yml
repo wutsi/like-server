@@ -16,3 +16,7 @@ memcached:
   password: ${MEMCACHIER_PASSWORD}
   servers: ${MEMCACHIER_SERVERS}
 
+rabbitmq:
+  enabled: true
+  url: ${CLOUDAMQP_URL}
+  thread-pool-size: 4

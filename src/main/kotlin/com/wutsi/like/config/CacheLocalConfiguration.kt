@@ -10,7 +10,7 @@ import org.springframework.context.`annotation`.Configuration
     value = ["memcached.enabled"],
     havingValue = "false"
 )
-public class SpringCacheLocalConfiguration {
+public class CacheLocalConfiguration {
     @Bean
     public fun cacheManager(): CacheManager {
         val cacheManager = org.springframework.cache.support.SimpleCacheManager()
