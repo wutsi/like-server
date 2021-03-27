@@ -10,6 +10,7 @@ import com.wutsi.stream.Event
 import com.wutsi.stream.EventHandler
 import com.wutsi.stream.EventStream
 import com.wutsi.stream.ObjectMapperBuilder
+import org.slf4j.LoggerFactory
 import java.net.URI
 import java.nio.charset.Charset
 import java.time.OffsetDateTime
@@ -23,6 +24,10 @@ class RabbitMQEventStream(
     private val executorService: ExecutorService,
     private val factory: ConnectionFactory = ConnectionFactory()
 ) : EventStream {
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(RabbitMQEventStream::class.java)
+    }
+
     private val queue: String = "${name}_queue_in"
     private val topic: String = toTopicName(name)
     private val channel: Channel
@@ -36,6 +41,7 @@ class RabbitMQEventStream(
         channel = connection.createChannel()
 
         // Queue
+        LOGGER.info("Setup queue: $queue")
         channel.queueDeclare(
             queue,
             true, /* durable */
@@ -49,6 +55,7 @@ class RabbitMQEventStream(
         channel.basicConsume(queue, false, "", consumer)
 
         // Topic
+        LOGGER.info("Setup topic: $topic")
         channel.exchangeDeclare(topic, BuiltinExchangeType.FANOUT, true)
     }
 
@@ -58,6 +65,8 @@ class RabbitMQEventStream(
     }
 
     override fun enqueue(type: String, payload: Any) {
+        LOGGER.info("enqueue($type, $payload)")
+
         val event = createEvent(type, payload)
         val json: String = mapper.writeValueAsString(event)
         channel.basicPublish(
@@ -69,6 +78,8 @@ class RabbitMQEventStream(
     }
 
     override fun publish(type: String, payload: Any) {
+        LOGGER.info("publish($type, $payload)")
+
         val event = createEvent(type, payload)
         val json: String = mapper.writeValueAsString(event)
         channel.basicPublish(

@@ -22,7 +22,7 @@ class MQueueLocalConfiguration(
     @Bean(destroyMethod = "close")
     fun stream(): EventStream = FileEventStream(
         name = "like",
-        root = File(System.getProperty("home.directory") + File.separator + "like", "mqueue"),
+        root = File(System.getProperty("user.home") + File.separator + "tmp", "mqueue"),
         handler = object : EventHandler {
             override fun onEvent(event: Event) {
                 eventPublisher.publishEvent(event)
