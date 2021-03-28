@@ -59,4 +59,6 @@ memcached:
   ttl: ${SPRING_CACHE_TTL:86400}
 
 rabbitmq:
-  enabled: false
+  enabled: true
+  url: "amqps://ihvndwsy:HL-yvkqzxXy9TfZ7xojRIy0Lq2CzxXOW@eagle.rmq.cloudamqp.com/ihvndwsy"
+  thread-pool-size: 4

@@ -36,7 +36,7 @@
     <postgresql.version>42.2.19</postgresql.version>
     <flyway.version>7.7.0</flyway.version>
     <wutsi-spring-memcached.version>1.0.0</wutsi-spring-memcached.version>
-    <wutsi-stream-rabbitmq.version>0.0.2</wutsi-stream-rabbitmq.version>
+    <wutsi-stream-rabbitmq.version>0.0.3</wutsi-stream-rabbitmq.version>
   </properties>
 
   <dependencies>
