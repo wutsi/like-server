@@ -1,30 +1,30 @@
 package com.wutsi.like.config
 
-import com.wutsi.stream.Event
-import com.wutsi.stream.EventHandler
 import com.wutsi.stream.EventStream
-import com.wutsi.stream.file.FileEventStream
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.beans.factory.`annotation`.Autowired
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.context.ApplicationEventPublisher
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
-import java.io.File
+import org.springframework.context.`annotation`.Bean
+import org.springframework.context.`annotation`.Configuration
 
 @Configuration
 @ConditionalOnProperty(
     value = ["rabbitmq.enabled"],
     havingValue = "false"
 )
-class MQueueLocalConfiguration(
-    @Autowired private val eventPublisher: ApplicationEventPublisher
+public class MQueueLocalConfiguration(
+    @Autowired
+    private val eventPublisher: ApplicationEventPublisher
 ) {
-    @Bean(destroyMethod = "close")
-    fun stream(): EventStream = FileEventStream(
+    @Bean
+    public fun eventStream(): EventStream = com.wutsi.stream.file.FileEventStream(
         name = "like",
-        root = File(System.getProperty("user.home") + File.separator + "tmp", "mqueue"),
-        handler = object : EventHandler {
-            override fun onEvent(event: Event) {
+        root = java.io.File(
+            System.getProperty("user.home") + java.io.File.separator + "tmp",
+            "mqueue"
+        ),
+        handler = object : com.wutsi.stream.EventHandler {
+            override fun onEvent(event: com.wutsi.stream.Event) {
                 eventPublisher.publishEvent(event)
             }
         }

@@ -8,7 +8,7 @@
 
   <artifactId>like-server</artifactId>
   <groupId>com.wutsi.like</groupId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <packaging>jar</packaging>
   <name>like-server</name>
 
@@ -36,7 +36,7 @@
     <postgresql.version>42.2.19</postgresql.version>
     <flyway.version>7.7.0</flyway.version>
     <wutsi-spring-memcached.version>1.0.0</wutsi-spring-memcached.version>
-    <wutsi-stream-rabbitmq.version>0.0.3</wutsi-stream-rabbitmq.version>
+    <wutsi-stream-rabbitmq.version>1.0.0</wutsi-stream-rabbitmq.version>
   </properties>
 
   <dependencies>
@@ -104,6 +104,10 @@
       <version>${wutsi-spring-memcached.version}</version>
     </dependency>
     <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+    <dependency>
       <groupId>com.wutsi</groupId>
       <artifactId>wutsi-stream-rabbitmq</artifactId>
       <version>${wutsi-stream-rabbitmq.version}</version>
@@ -155,10 +159,6 @@
     <repository>
       <id>wutsi-spring-memcached</id>
       <url>https://maven.pkg.github.com/wutsi/wutsi-spring-memcached</url>
-    </repository>
-    <repository>
-      <id>wutsi-stream-rabbitmq</id>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-stream-rabbitmq</url>
     </repository>
   </repositories>
 

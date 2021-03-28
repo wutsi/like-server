@@ -15,8 +15,8 @@ memcached:
   username: ${MEMCACHIER_USERNAME}
   password: ${MEMCACHIER_PASSWORD}
   servers: ${MEMCACHIER_SERVERS}
-
 rabbitmq:
   enabled: true
   url: ${CLOUDAMQP_URL}
-  thread-pool-size: 4
+  thread-pool-size: 8
+

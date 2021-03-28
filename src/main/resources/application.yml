@@ -57,8 +57,7 @@ spring:
 memcached:
   enabled: false
   ttl: ${SPRING_CACHE_TTL:86400}
-
 rabbitmq:
-  enabled: true
-  url: "amqps://ihvndwsy:HL-yvkqzxXy9TfZ7xojRIy0Lq2CzxXOW@eagle.rmq.cloudamqp.com/ihvndwsy"
-  thread-pool-size: 4
+  enabled: false
+
+

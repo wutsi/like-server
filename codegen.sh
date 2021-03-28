@@ -1,4 +1,4 @@
-java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.19.jar server \
+java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.20.jar server \
     -j 11 \
     -a like -p com.wutsi.like \
     -g wutsi \
@@ -7,7 +7,9 @@ java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.19.jar server \
     -heroku wutsi-like-service \
     -service_cache \
     -service_logger \
-    -service_database
+    -service_database \
+    -service_mqueue
 
+echo Code Cleanup...
 mvn antrun:run@ktlint-format
 mvn antrun:run@ktlint-format
