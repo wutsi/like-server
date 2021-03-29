@@ -4,6 +4,7 @@ import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.domain.EventEntity
 import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.event.EventType.SUBMITTED
+import com.wutsi.like.service.LegacyService
 import com.wutsi.like.service.UrlNormalizer
 import com.wutsi.stream.Event
 import com.wutsi.stream.EventStream
@@ -18,21 +19,26 @@ class EventListener(
     private val urlNormalizer: UrlNormalizer,
     private val dao: EventRepository,
     private val eventStream: EventStream,
-    private val cacheManager: CacheManager
+    private val cacheManager: CacheManager,
+    private val legacyService: LegacyService
 ) {
     companion object {
         private val LOGGER = LoggerFactory.getLogger(EventListener::class.java)
     }
+
+    private val mapper = ObjectMapperBuilder().build()
 
     @EventListener
     fun onEvent(event: Event) {
         LOGGER.info("onEvent($event)")
 
         val type = event.type
-        val mapper = ObjectMapperBuilder().build()
         if (type == SUBMITTED.urn) {
             val payload = mapper.readValue(event.payload, SubmittedEventPayload::class.java)
             onSubmitted(event, payload)
+        } else if (isLegacyEvent(type)) {
+            val payload = mapper.readValue(event.payload, LegacyEventPayload::class.java)
+            onLegacyEvent(event, payload)
         }
     }
 
@@ -55,4 +61,19 @@ class EventListener(
         // Remove from cache
         cacheManager.getCache("default").evict(entity.urlHash)
     }
+
+    private fun onLegacyEvent(event: Event, payload: LegacyEventPayload) {
+        eventStream.enqueue(
+            type = SUBMITTED.urn,
+            payload = SubmittedEventPayload(
+                userId = payload.userId,
+                deviceUUID = payload.deviceUUID,
+                likeDateTime = payload.likeDateTime,
+                canonicalUrl = legacyService.storyUrl(payload.storyId)
+            )
+        )
+    }
+
+    private fun isLegacyEvent(type: String): Boolean =
+        type == EventType.LEGACY_LIKED.urn || type == EventType.LEGACY_UNLIKED.urn
 }

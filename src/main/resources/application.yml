@@ -60,4 +60,6 @@ memcached:
 rabbitmq:
   enabled: false
 
-
+wutsi:
+  legacy:
+    url-prefix: "http://localhost:8082"
