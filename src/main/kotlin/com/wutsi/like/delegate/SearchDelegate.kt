@@ -2,6 +2,7 @@ package com.wutsi.like.`delegate`
 
 import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.domain.EventEntity
+import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.model.Like
 import com.wutsi.like.model.SearchLikeResponse
 import com.wutsi.like.service.UrlNormalizer
@@ -24,9 +25,9 @@ public class SearchDelegate(
         val urlHash = urlNormalizer.hash(canonicalUrl)
         val pagination = PageRequest.of(offset / limit, limit, Sort.by("timestamp").descending())
         val events = if (userId != null)
-            dao.findByUrlHashAndUserId(urlHash, userId, pagination)
+            dao.findByUrlHashAndUserIdAndType(urlHash, userId, LIKED, pagination)
         else if (deviceUuid != null)
-            dao.findByUrlHashAndDeviceUUID(urlHash, deviceUuid, pagination)
+            dao.findByUrlHashAndDeviceUUIDAndType(urlHash, deviceUuid, LIKED, pagination)
         else
             emptyList()
 

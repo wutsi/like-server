@@ -1,13 +1,14 @@
 package com.wutsi.like.dao
 
 import com.wutsi.like.domain.EventEntity
+import com.wutsi.like.event.EventType
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
 @Repository
 interface EventRepository : CrudRepository<EventEntity, Long> {
-    fun findByUrlHash(urlHash: String): List<EventEntity>
-    fun findByUrlHashAndUserId(urlHash: String, userId: Long, pagination: Pageable): List<EventEntity>
-    fun findByUrlHashAndDeviceUUID(urlHash: String, deviceUUID: String, pagination: Pageable): List<EventEntity>
+    fun findByUrlHashAndType(urlHash: String, type: EventType): List<EventEntity>
+    fun findByUrlHashAndUserIdAndType(urlHash: String, userId: Long, type: EventType, pagination: Pageable): List<EventEntity>
+    fun findByUrlHashAndDeviceUUIDAndType(urlHash: String, deviceUUID: String, type: EventType, pagination: Pageable): List<EventEntity>
 }

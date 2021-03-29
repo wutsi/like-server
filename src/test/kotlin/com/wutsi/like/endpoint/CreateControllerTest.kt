@@ -2,6 +2,7 @@ package com.wutsi.like.endpoint
 
 import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.event.EventType
+import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.model.CreateLikeRequest
 import com.wutsi.like.model.CreateLikeResponse
 import com.wutsi.like.service.UrlNormalizer
@@ -53,7 +54,7 @@ internal class CreateControllerTest {
 
         Thread.sleep(10000) // Wait for message to be consumed
         val hash = nomalizer.hash(request.canonicalUrl)
-        val events = dao.findByUrlHash(hash)
+        val events = dao.findByUrlHashAndType(hash, LIKED)
         assertEquals(1, events.size)
 
         val event = events[0]

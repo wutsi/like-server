@@ -5,4 +5,5 @@ enum class EventType(
 ) {
     INVALID("urn:wutsi:like:invalid"),
     LIKED("urn:wutsi:like:liked"),
+    SUBMITTED("urn:wutsi:like:submitted"),
 }

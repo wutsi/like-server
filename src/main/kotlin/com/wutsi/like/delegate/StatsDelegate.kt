@@ -2,6 +2,7 @@ package com.wutsi.like.`delegate`
 
 import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.domain.EventEntity
+import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.model.GetStatsResponse
 import com.wutsi.like.service.UrlNormalizer
 import org.slf4j.LoggerFactory
@@ -49,7 +50,7 @@ public class StatsDelegate(
     }
 
     fun fromDb(urlHash: String): Long {
-        val events = dao.findByUrlHash(urlHash)
+        val events = dao.findByUrlHashAndType(urlHash, LIKED)
             .groupBy { it.generateUserOrDeviceKey() }
 
         return events.map { likeValue(it.value) }

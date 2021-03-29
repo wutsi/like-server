@@ -1,7 +1,7 @@
 package com.wutsi.like.`delegate`
 
 import com.wutsi.like.event.EventType
-import com.wutsi.like.event.LikeEventPayload
+import com.wutsi.like.event.SubmittedEventPayload
 import com.wutsi.like.model.CreateLikeRequest
 import com.wutsi.like.model.CreateLikeResponse
 import com.wutsi.stream.EventStream
@@ -14,8 +14,8 @@ class CreateDelegate(
 ) {
     fun invoke(request: CreateLikeRequest): CreateLikeResponse {
         events.enqueue(
-            type = EventType.LIKED.urn,
-            payload = LikeEventPayload(
+            type = EventType.SUBMITTED.urn,
+            payload = SubmittedEventPayload(
                 canonicalUrl = request.canonicalUrl,
                 userId = request.userId,
                 deviceUUID = request.deviceUUID,
