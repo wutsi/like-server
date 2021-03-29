@@ -1,4 +1,4 @@
-java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.21.jar server \
+java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.19.jar server \
     -j 11 \
     -a like -p com.wutsi.like \
     -g wutsi \

@@ -6,6 +6,7 @@ import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.service.UrlNormalizer
 import com.wutsi.stream.Event
 import com.wutsi.stream.ObjectMapperBuilder
+import org.slf4j.LoggerFactory
 import org.springframework.cache.CacheManager
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
@@ -16,11 +17,16 @@ class EventListener(
     private val dao: EventRepository,
     private val cacheManager: CacheManager
 ) {
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(EventListener::class.java)
+    }
+
     @EventListener
     fun onEvent(event: Event) {
+        LOGGER.info("onEvent($event)")
+
         val type = event.type
         val mapper = ObjectMapperBuilder().build()
-
         if (type == LIKED.urn) {
             val payload = mapper.readValue(event.payload, LikeEventPayload::class.java)
             onLike(event, payload)
