@@ -4,6 +4,7 @@ import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.domain.EventEntity
 import com.wutsi.like.model.GetStatsResponse
 import com.wutsi.like.service.UrlNormalizer
+import org.slf4j.LoggerFactory
 import org.springframework.cache.Cache
 import org.springframework.cache.CacheManager
 import org.springframework.stereotype.Service
@@ -15,6 +16,10 @@ public class StatsDelegate(
     private val urlNormalizer: UrlNormalizer,
     private val cacheManager: CacheManager
 ) {
+    companion object {
+        private val LOGGER = LoggerFactory.getLogger(StatsDelegate::class.java)
+    }
+
     fun invoke(canonicalUrl: String): GetStatsResponse {
         val urlHash = urlNormalizer.hash(canonicalUrl)
         val cache = cacheManager.getCache("default")
@@ -32,10 +37,16 @@ public class StatsDelegate(
         )
     }
 
-    fun fromCache(urlHash: String, cache: Cache): Optional<Long> =
-        Optional.ofNullable(
-            cache.get(urlHash, Long::class.java)
-        )
+    fun fromCache(urlHash: String, cache: Cache): Optional<Long> {
+        try {
+            return Optional.ofNullable(
+                cache.get(urlHash, Long::class.java)
+            )
+        } catch (ex: Exception) {
+            LOGGER.error("Unable to resolved data from cache", ex)
+            return Optional.empty()
+        }
+    }
 
     fun fromDb(urlHash: String): Long {
         val events = dao.findByUrlHash(urlHash)
