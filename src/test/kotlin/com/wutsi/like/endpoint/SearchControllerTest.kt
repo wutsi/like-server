@@ -35,7 +35,6 @@ internal class SearchControllerTest {
         assertEquals(1, result.body.likes.size)
 
         val likes = result.body.likes.sortedBy { it.id }
-        assertEquals(3L, likes[0].id)
         assertEquals("https://www.google.com", likes[0].canonicalUrl)
         assertEquals("4fad8daa-d502-41b7-ac4a-2c7d97fa75ff", likes[0].deviceUUID)
         assertEquals(1L, likes[0].userId)
