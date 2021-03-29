@@ -1,8 +1,10 @@
 package com.wutsi.like.endpoint
 
-import com.wutsi.like.dao.LikeRepository
+import com.wutsi.like.dao.EventRepository
+import com.wutsi.like.event.EventType
 import com.wutsi.like.model.CreateLikeRequest
 import com.wutsi.like.model.CreateLikeResponse
+import com.wutsi.like.service.UrlNormalizer
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -14,6 +16,7 @@ import org.springframework.web.client.HttpClientErrorException
 import org.springframework.web.client.RestTemplate
 import java.util.UUID
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.fail
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -23,7 +26,10 @@ internal class CreateControllerTest {
     private val port = 0
 
     @Autowired
-    lateinit var likeDao: LikeRepository
+    lateinit var dao: EventRepository
+
+    @Autowired
+    lateinit var nomalizer: UrlNormalizer
 
     lateinit var url: String
 
@@ -43,14 +49,20 @@ internal class CreateControllerTest {
             userId = 11
         )
         val response = rest.postForEntity(url, request, CreateLikeResponse::class.java)
-
         assertEquals(HttpStatus.OK, response.statusCode)
 
-        val like = likeDao.findById(response.body.likeId).get()
-        assertEquals("https://www.google.ca", like.canonicalUrl)
-        assertEquals("42a439d6731734d571b61d0b097d72ba507ec06d4a9092ef0d4627979d9eb3df", like.urlHash)
-        assertEquals(request.deviceUUID, like.deviceUUID)
-        assertEquals(request.userId, like.userId)
+        Thread.sleep(10000) // Wait for message to be consumed
+        val hash = nomalizer.hash(request.canonicalUrl)
+        val events = dao.findByUrlHash(hash)
+        assertEquals(1, events.size)
+
+        val event = events[0]
+        assertEquals("https://www.google.ca", event.canonicalUrl)
+        assertEquals(EventType.LIKED, event.type)
+        assertNotNull(event.timestamp)
+        assertEquals(hash, event.urlHash)
+        assertEquals(request.deviceUUID, event.deviceUUID)
+        assertEquals(request.userId, event.userId)
     }
 
     @Test

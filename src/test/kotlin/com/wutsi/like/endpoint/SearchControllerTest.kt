@@ -28,26 +28,29 @@ internal class SearchControllerTest {
     }
 
     @Test
-    fun `search by url and userId`() {
+    fun `search by userId`() {
         val result = rest.getForEntity("$url&user_id={user_id}", SearchLikeResponse::class.java, "https://www.google.com", 1)
 
         assertEquals(HttpStatus.OK, result.statusCode)
-        assertEquals(2, result.body.likes.size)
+        assertEquals(1, result.body.likes.size)
 
         val likes = result.body.likes.sortedBy { it.id }
-        assertEquals(1L, likes[0].id)
+        assertEquals(3L, likes[0].id)
         assertEquals("https://www.google.com", likes[0].canonicalUrl)
-        assertNull(likes[0].deviceUUID)
+        assertEquals("4fad8daa-d502-41b7-ac4a-2c7d97fa75ff", likes[0].deviceUUID)
         assertEquals(1L, likes[0].userId)
-
-        assertEquals(2L, likes[1].id)
-        assertEquals("https://www.google.com", likes[1].canonicalUrl)
-        assertEquals("4fad8daa-d502-41b7-ac4a-2c7d97fa7543", likes[1].deviceUUID)
-        assertEquals(1L, likes[1].userId)
     }
 
     @Test
-    fun `search by url and deviceUUID`() {
+    fun `search by userId - no likes`() {
+        val result = rest.getForEntity("$url&user_id={user_id}", SearchLikeResponse::class.java, "https://www.google.com", 999)
+
+        assertEquals(HttpStatus.OK, result.statusCode)
+        assertEquals(0, result.body.likes.size)
+    }
+
+    @Test
+    fun `search deviceUUID`() {
         val result = rest.getForEntity(
             "$url&device_uuid={device_uuid}",
             SearchLikeResponse::class.java,
@@ -58,10 +61,9 @@ internal class SearchControllerTest {
         assertEquals(HttpStatus.OK, result.statusCode)
         assertEquals(1, result.body.likes.size)
 
-        assertEquals(2L, result.body.likes[0].id)
         assertEquals("https://www.google.com", result.body.likes[0].canonicalUrl)
         assertEquals("4fad8daa-d502-41b7-ac4a-2c7d97fa7543", result.body.likes[0].deviceUUID)
-        assertEquals(1L, result.body.likes[0].userId)
+        assertNull(result.body.likes[0].userId)
     }
 
     @Test
@@ -69,6 +71,6 @@ internal class SearchControllerTest {
         val result = rest.getForEntity(url, SearchLikeResponse::class.java, "https://www.google.com")
 
         assertEquals(HttpStatus.OK, result.statusCode)
-        assertEquals(4, result.body.likes.size)
+        assertEquals(0, result.body.likes.size)
     }
 }

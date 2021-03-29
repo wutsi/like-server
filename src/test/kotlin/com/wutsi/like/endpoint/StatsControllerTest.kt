@@ -4,8 +4,10 @@ import com.wutsi.like.model.GetStatsResponse
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.cache.CacheManager
 import org.springframework.http.HttpStatus
 import org.springframework.test.context.jdbc.Sql
 import org.springframework.web.client.RestTemplate
@@ -16,6 +18,9 @@ internal class StatsControllerTest {
     @LocalServerPort
     private val port = 0
 
+    @Autowired
+    lateinit var cacheManager: CacheManager
+
     lateinit var rest: RestTemplate
 
     lateinit var url: String
@@ -24,6 +29,10 @@ internal class StatsControllerTest {
     fun setUp() {
         rest = RestTemplate()
         url = "http://127.0.0.1:$port/v1/likes/stats?canonical_url={url}"
+
+        cacheManager.cacheNames.forEach {
+            cacheManager.getCache(it).clear()
+        }
     }
 
     @Test

@@ -1,19 +1,27 @@
 package com.wutsi.like.domain
 
-import java.util.Date
+import com.wutsi.like.event.EventType
+import com.wutsi.like.event.EventType.INVALID
+import java.time.OffsetDateTime
 import javax.persistence.Column
 import javax.persistence.Entity
+import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table(name = "T_LIKE")
-data class LikeEntity(
+@Table(name = "T_EVENT")
+data class EventEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
+
+    @Enumerated
+    val type: EventType = INVALID,
+
+    val timestamp: OffsetDateTime = OffsetDateTime.now(),
 
     @Column(name = "canonical_url")
     val canonicalUrl: String = "",
@@ -25,8 +33,10 @@ data class LikeEntity(
     val deviceUUID: String? = null,
 
     @Column(name = "user_id")
-    val userId: Long? = null,
-
-    @Column(name = "like_date_time")
-    val likeDateTime: Date = Date()
-)
+    val userId: Long? = null
+) {
+    fun generateUserOrDeviceKey(): String {
+        val key = this.userId ?: this.deviceUUID
+        return key.toString() ?: "-"
+    }
+}
