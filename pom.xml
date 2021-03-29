@@ -167,6 +167,10 @@
       <id>wutsi-spring-memcached</id>
       <url>https://maven.pkg.github.com/wutsi/wutsi-spring-memcached</url>
     </repository>
+    <repository>
+      <id>github-wutsi-blog-client</id>
+      <url>https://maven.pkg.github.com/wutsi/wutsi-blog-client</url>
+    </repository>
   </repositories>
 
   <build>
