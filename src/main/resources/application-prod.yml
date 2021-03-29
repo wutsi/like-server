@@ -21,8 +21,6 @@ rabbitmq:
   thread-pool-size: 8
 
 wutsi:
-  legacy:
-    url: "http://localhost:8082"
-    story:
-      read-url-prefix: "${wutsi.legacy.url}/read"
+  website:
+    url: "https://wutsi.com"
 

@@ -20,3 +20,6 @@ rabbitmq:
   url: ${CLOUDAMQP_URL}
   thread-pool-size: 8
 
+wutsi:
+  website:
+    url: "https://int-wutsi-blog-web.herokuapp.com"

@@ -26,6 +26,7 @@ import java.time.OffsetDateTime
 import java.util.UUID
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
+import com.wutsi.blog.stream.LikeEventPayload as LegacyEventPayload
 
 internal class EventListenerTest {
     private lateinit var urlNormalizer: UrlNormalizer

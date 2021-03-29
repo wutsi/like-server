@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory
 import org.springframework.cache.CacheManager
 import org.springframework.context.event.EventListener
 import org.springframework.stereotype.Service
+import com.wutsi.blog.stream.LikeEventPayload as LegacyEventPayload
 
 @Service
 class EventListener(

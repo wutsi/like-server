@@ -61,5 +61,7 @@ rabbitmq:
   enabled: false
 
 wutsi:
-  legacy:
-    url-prefix: "http://localhost:8082"
+  website:
+    url: "http://localhost:8082"
+    story:
+      read-url-prefix: "${wutsi.website.url}/read"
