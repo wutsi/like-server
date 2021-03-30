@@ -168,6 +168,10 @@
       <url>https://maven.pkg.github.com/wutsi/wutsi-spring-memcached</url>
     </repository>
     <repository>
+      <id>wutsi-stream-rabbitmq</id>
+      <url>https://maven.pkg.github.com/wutsi/wutsi-stream-rabbitmq</url>
+    </repository>
+    <repository>
       <id>github-wutsi-blog-client</id>
       <url>https://maven.pkg.github.com/wutsi/wutsi-blog-client</url>
     </repository>

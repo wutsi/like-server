@@ -2,7 +2,7 @@ openapi: 3.0.0
 info:
   title: Wutsi Like API
   description: This api used for managing likes on links
-  version: 0.0.3
+  version: 1.0.0
 servers:
   - url: 'https://wutsi-like-service-prod.herokuapp.com'
     description: Production
@@ -130,6 +130,10 @@ components:
         userId:
           type: integer
           format: int64
+          nullable: true
+        likeDateTime:
+          type: string
+          format: date-time
           nullable: true
       required:
         - canonicalUrl
