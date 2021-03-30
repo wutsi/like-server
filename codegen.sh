@@ -1,9 +1,11 @@
 java -jar ../wutsi-codegen/target/wutsi-codegen-0.0.21.jar server \
-    -j 11 \
-    -a like -p com.wutsi.like \
-    -g wutsi \
-    -i https://wutsi-openapi.s3.amazonaws.com/like_api.yaml \
-    -o . \
+    -in https://wutsi-openapi.s3.amazonaws.com/like_api.yaml \
+    -out . \
+    -name like \
+    -package com.wutsi.like \
+    -jdk 11 \
+    -github_user wutsi \
+    -github_project like-server \
     -heroku wutsi-like-service \
     -service_cache \
     -service_logger \

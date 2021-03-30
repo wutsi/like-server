@@ -1,5 +1,5 @@
-[![](https://github.com/wutsi/Wutsi-Like-API-service/actions/workflows/master.yml/badge.svg)](https://github.com/wutsi/Wutsi-Like-API-service/actions/workflows/master.yml)
-[![](https://github.com/wutsi/Wutsi-Like-API-service/actions/workflows/pull_request.yml/badge.svg)](https://github.com/wutsi/Wutsi-Like-API-service/actions/workflows/pull_request.yml)
+[![](https://github.com/wutsi/like-server/actions/workflows/master.yml/badge.svg)](https://github.com/wutsi/like-server/actions/workflows/master.yml)
+[![](https://github.com/wutsi/like-server/actions/workflows/pull_request.yml/badge.svg)](https://github.com/wutsi/like-server/actions/workflows/pull_request.yml)
 
 [![JDK](https://img.shields.io/badge/jdk-11-brightgreen.svg)](https://jdk.java.net/11/)
 [![](https://img.shields.io/badge/maven-3.6-brightgreen.svg)](https://maven.apache.org/download.cgi)
@@ -12,7 +12,7 @@ This api used for managing likes on links
 ## Database Setup
 - Install postgres
 - Create account with username/password: `postgres`/`postgres`
-- Create a database named ``
+- Create a database named `like`
 
 ## Configure Github
 - Generate a Github token for accessing packages from GibHub
@@ -22,8 +22,8 @@ This api used for managing likes on links
   - Select the permissions `read:packages`
   - Generate the token
 - Set your GitHub environment variables on your machine:
-  - `GITHUB_TOKEN` = <your-token-value>
-  - `GITHUB_USER` = <your-github-user-name>
+  - `GITHUB_TOKEN` = your-token-value
+  - `GITHUB_USER` = your-github-user-name
 
 ## Maven Setup
 - Download Instance [Maven 3.6+](https://maven.apache.org/download.cgi)
@@ -50,12 +50,12 @@ This api used for managing likes on links
 ## Usage
 - Install
 ```
-$ git clone git@github.com:wutsi/Wutsi-Like-API-service.git
+$ git clone git@github.com:wutsi/like-server.git
 ```
 
 - Build
 ```
-$ cd Wutsi-Like-API-service
+$ cd like-server
 $ mvn clean install
 ```
 
