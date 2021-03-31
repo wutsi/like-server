@@ -98,6 +98,17 @@ paths:
           schema:
             type: string
             nullable: false
+        - in: query
+          name: user_id
+          schema:
+            type: integer
+            format: int64
+            nullable: true
+        - in: query
+          name: device_uuid
+          schema:
+            type: string
+            nullable: true
       responses:
         '200':
           description: Success
@@ -151,11 +162,17 @@ components:
         canonicalUrl:
           type: string
           format: uri
+          description: canonical URL of the link
           example: 'https://www.foo.com/read/123'
         count:
           type: number
           format: int64
+          description: Number of likes on the link
           example: 1500
+        liked:
+          type: boolean
+          description: true if the user or device has liked the link
+          example: true
     SearchLikeResponse:
       type: object
       properties:
