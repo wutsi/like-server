@@ -4,56 +4,12 @@ info:
   description: This api used for managing likes on links
   version: 1.0.0
 servers:
-  - url: 'https://wutsi-like-service-prod.herokuapp.com'
-    description: Production
   - url: 'https://wutsi-like-service-test.herokuapp.com'
     description: Sandbox
+  - url: 'https://wutsi-like-service-prod.herokuapp.com'
+    description: Production
 paths:
   /v1/likes:
-    get:
-      operationId: search
-      summary: Search the Likes for a given link
-      parameters:
-        - in: query
-          name: canonical_url
-          required: true
-          schema:
-            type: string
-        - in: query
-          name: user_id
-          schema:
-            type: integer
-            format: int64
-            nullable: true
-        - in: query
-          name: device_uuid
-          schema:
-            type: string
-            nullable: true
-        - in: query
-          name: limit
-          schema:
-            type: integer
-            nullable: false
-            default: 20
-            example: 20
-        - in: query
-          name: offset
-          schema:
-            type: integer
-            default: 0
-            example: 0
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SearchLikeResponse'
-      security:
-        - api_key: []
-      tags:
-        - Like
     post:
       operationId: create
       summary: Submit a Like request
@@ -63,6 +19,7 @@ paths:
         - The next time the user will click on the `Like` button, it means he unliked the link
         - If the user clicks a third time, it means he liked the link
         - etc.
+        After the site is created, the event `urn:event:wutsi:like:liked` will be fired.
       requestBody:
         description: Like request
         required: true
@@ -173,13 +130,6 @@ components:
           type: boolean
           description: true if the user or device has liked the link
           example: true
-    SearchLikeResponse:
-      type: object
-      properties:
-        likes:
-          type: array
-          items:
-            $ref: '#/components/schemas/Like'
     Like:
       type: object
       properties:

@@ -1,10 +1,12 @@
 package com.wutsi.like.endpoint
 
-import com.wutsi.like.delegate.StatsDelegate
+import com.wutsi.like.`delegate`.StatsDelegate
 import com.wutsi.like.dto.GetStatsResponse
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.`annotation`.GetMapping
+import org.springframework.web.bind.`annotation`.RequestParam
+import org.springframework.web.bind.`annotation`.RestController
+import kotlin.Long
+import kotlin.String
 
 @RestController
 public class StatsController(
