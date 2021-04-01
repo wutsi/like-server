@@ -1,9 +1,9 @@
 package com.wutsi.like.endpoint
 
 import com.wutsi.like.dao.EventRepository
+import com.wutsi.like.dto.CreateLikeRequest
+import com.wutsi.like.dto.CreateLikeResponse
 import com.wutsi.like.event.EventType
-import com.wutsi.like.model.CreateLikeRequest
-import com.wutsi.like.model.CreateLikeResponse
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired

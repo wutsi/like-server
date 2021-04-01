@@ -2,9 +2,9 @@ package com.wutsi.like.`delegate`
 
 import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.domain.EventEntity
+import com.wutsi.like.dto.Like
+import com.wutsi.like.dto.SearchLikeResponse
 import com.wutsi.like.event.EventType.LIKED
-import com.wutsi.like.model.Like
-import com.wutsi.like.model.SearchLikeResponse
 import com.wutsi.like.service.UrlNormalizer
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort

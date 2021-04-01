@@ -1,8 +1,6 @@
-package com.wutsi.like.model
+package com.wutsi.like.dto
 
 import java.time.OffsetDateTime
-import kotlin.Long
-import kotlin.String
 
 public data class Like(
     public val id: Long = 0,

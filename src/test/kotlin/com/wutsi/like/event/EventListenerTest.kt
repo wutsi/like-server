@@ -7,9 +7,9 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.wutsi.like.delegate.CreateDelegate
+import com.wutsi.like.dto.CreateLikeRequest
 import com.wutsi.like.event.EventType.LEGACY_LIKED
 import com.wutsi.like.event.EventType.LEGACY_UNLIKED
-import com.wutsi.like.model.CreateLikeRequest
 import com.wutsi.like.service.LegacyService
 import com.wutsi.like.service.UrlNormalizer
 import com.wutsi.stream.Event

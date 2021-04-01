@@ -1,6 +1,6 @@
 package com.wutsi.like.endpoint
 
-import com.wutsi.like.model.SearchLikeResponse
+import com.wutsi.like.dto.SearchLikeResponse
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNull
 import org.junit.jupiter.api.BeforeEach

@@ -1,6 +1,6 @@
 package com.wutsi.like.endpoint
 
-import com.wutsi.like.model.GetStatsResponse
+import com.wutsi.like.dto.GetStatsResponse
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test

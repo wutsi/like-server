@@ -1,7 +1,7 @@
 package com.wutsi.like.event
 
 import com.wutsi.like.delegate.CreateDelegate
-import com.wutsi.like.model.CreateLikeRequest
+import com.wutsi.like.dto.CreateLikeRequest
 import com.wutsi.like.service.LegacyService
 import com.wutsi.stream.Event
 import com.wutsi.stream.ObjectMapperBuilder

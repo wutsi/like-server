@@ -1,8 +1,4 @@
-package com.wutsi.like.model
-
-import kotlin.Boolean
-import kotlin.Long
-import kotlin.String
+package com.wutsi.like.dto
 
 public data class GetStatsResponse(
     public val canonicalUrl: String = "",

@@ -2,10 +2,10 @@ package com.wutsi.like.`delegate`
 
 import com.wutsi.like.dao.EventRepository
 import com.wutsi.like.domain.EventEntity
+import com.wutsi.like.dto.CreateLikeRequest
+import com.wutsi.like.dto.CreateLikeResponse
 import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.event.LikedEventPayload
-import com.wutsi.like.model.CreateLikeRequest
-import com.wutsi.like.model.CreateLikeResponse
 import com.wutsi.like.service.UrlNormalizer
 import com.wutsi.stream.EventStream
 import org.springframework.cache.Cache
