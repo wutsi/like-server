@@ -79,12 +79,6 @@ internal class EventListenerTest {
         payload = ObjectMapperBuilder().build().writeValueAsString(payload)
     )
 
-    private fun createSubmittedPayload() = SubmittedEventPayload(
-        canonicalUrl = "http://www.google.ca",
-        deviceUUID = UUID.randomUUID().toString(),
-        userId = 11L
-    )
-
     private fun createLegacyPayload() = LegacyEventPayload(
         deviceUUID = UUID.randomUUID().toString(),
         userId = 11L,
