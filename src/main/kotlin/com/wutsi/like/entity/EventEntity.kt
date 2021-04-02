@@ -1,4 +1,4 @@
-package com.wutsi.like.domain
+package com.wutsi.like.entity
 
 import com.wutsi.like.event.EventType
 import com.wutsi.like.event.EventType.INVALID

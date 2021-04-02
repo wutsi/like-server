@@ -1,8 +1,8 @@
 package com.wutsi.like.`delegate`
 
 import com.wutsi.like.dao.EventRepository
-import com.wutsi.like.domain.EventEntity
 import com.wutsi.like.dto.GetStatsResponse
+import com.wutsi.like.entity.EventEntity
 import com.wutsi.like.event.EventType.LIKED
 import com.wutsi.like.service.UrlNormalizer
 import org.slf4j.LoggerFactory
@@ -58,14 +58,6 @@ public class StatsDelegate(
             count = count,
             liked = keys.contains(userId?.toString()) || keys.contains(deviceUuid)
         )
-    }
-
-    private fun liked(event: EventEntity, userId: Long?, deviceUuid: String?): Boolean {
-        if (userId == null || deviceUuid == null)
-            return false
-
-        return (event.userId != null && event.userId == userId) ||
-            (event.deviceUUID != null && event.deviceUUID == deviceUuid)
     }
 
     private fun likeValue(events: List<EventEntity>): Int =

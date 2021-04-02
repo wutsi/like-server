@@ -1,6 +1,6 @@
 package com.wutsi.like.dao
 
-import com.wutsi.like.domain.EventEntity
+import com.wutsi.like.entity.EventEntity
 import com.wutsi.like.event.EventType
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.CrudRepository
